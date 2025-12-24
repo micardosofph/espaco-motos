@@ -1,0 +1,498 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lexend:wght@100..900&display=swap');
+
+:root {
+    --header-color: #000000;
+    --border-itemMoto-color: #edecf2;
+    --informacoesPequenas-color: #696977;
+    --verDetalhesButton-color: #2e2e3a;
+    --yellow-accent-color: #f4cc40;
+    --border-motoSelecionada : #f4cc40;
+    --hover-color: #c9c9c980;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Bebas Neue", sans-serif;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+
+body.no-scroll {
+    overflow:hidden;
+}
+
+header {
+    background-color: var(--header-color);
+    height: 6rem;
+    width: auto;
+
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.img-Logo {
+    height: 100%;
+    width: auto;
+}
+
+main {
+    padding: 1rem 5rem;
+}
+
+.topoMain {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center
+}
+
+.h1-titleMotos {
+    font-size: 4rem;
+    color: #f4cc40;
+
+    text-align: center;
+    user-select: none;
+
+    -webkit-text-stroke-width: 0.25px;
+    -webkit-text-stroke-color: black;
+}
+
+.h1-quantidadeAnuncios {
+    font-size: 2rem;
+    font-weight: 500;
+    color: black;
+
+    text-align: center;
+    user-select: none;
+}
+
+.ordenarMotos {
+    position: relative;
+    width: 6rem;
+    height: 3rem;
+    background-color: var(--yellow-accent-color);
+    cursor: pointer;
+    border-radius: 1rem;
+
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.ordenarMotos p {
+    user-select: none;
+    text-align: center;
+}
+
+.ordenarMotos-dropdown {
+    opacity: 0;
+    pointer-events: none;
+    cursor: default;
+    transition: 0.3s ease;
+
+    position: absolute;
+    width: auto;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    background-color: white;
+    border: 1px solid var(--border-itemMoto-color);
+
+    top: 100%;
+
+    right: 0;
+    margin-top: 10px;
+    border-radius: 1rem;
+    list-style: none;
+
+    z-index: 1;
+}
+
+.ordenarMotos-dropdown.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+.ordenarMotos-dropdown li {
+    background-color: transparent;
+    left: 0;
+    cursor: pointer;
+
+    width: 10rem;
+    padding: .75rem 1rem;
+
+    font-weight: 500;
+    font-size: 1.25rem;
+    white-space: nowrap;
+}
+
+.ordenarMotos-dropdown li:hover {
+    background-color: var(--hover-color);
+    position: relative;
+}
+
+.topoGridMotos {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grid-fotosMoto {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1rem;
+
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-auto-rows: 1fr;
+
+    align-items: stretch;
+}
+
+.grid-fotosMoto-moto {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    border-radius: 1rem;
+    border: 1px solid var(--border-itemMoto-color);
+
+    flex-shrink: 0;
+}
+
+.grid-fotosMoto-moto img {
+    border-radius: 1rem 1rem 0 0;
+    aspect-ratio: 256 / 191;
+    object-fit: cover;
+}
+
+.grid-fotosMoto-moto-body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+    flex-grow: 1;
+    
+    position: relative;
+}
+
+.grid-fotosMoto-moto-bodyInterno{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.informacoesPequenasMoto{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 0.5rem;
+}
+
+.informacoesPequenasMoto div{
+    display: flex;
+    flex-direction: row;
+}
+
+.grid-fotosMoto-moto.selecionada {
+    border: none;
+    box-shadow: 0 0 0 2px var(--border-motoSelecionada);
+
+    transition: all 0.25s ease-in-out;
+}
+
+.svg-iconesItemMoto path {
+    fill-rule: evenodd;
+    clip-rule: evenodd;
+
+    fill: var(--informacoesPequenas-color)
+}
+
+.informacoesPequenasMoto-text {
+    color: var(--informacoesPequenas-color);
+}
+
+.nome-moto {
+    max-width: 100%;
+    overflow: hidden;
+    word-break: break-all;
+    text-overflow: ellipsis;
+}
+
+.preco-moto {
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 130%;
+}
+
+.bottomMoto{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.button-verDetalhes {
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    width: calc(100% - 2rem);
+    align-self: stretch;
+    margin-top: auto;
+
+    border: none;
+    background-color: var(--verDetalhesButton-color);
+    color: white;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    border-radius: 0.5rem;
+    cursor: pointer;
+
+    transition: 0.25s all;
+}
+
+.button-verDetalhes:hover {
+    background-color: black;
+}
+
+.button-verDetalhes-whatsappButton {
+    padding: 0.5rem;
+    border-radius: 50%;
+    background-color: #34c85f;
+    border: none;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.25s all;
+}
+
+.button-verDetalhes-whatsappButton svg {
+    color: white;
+}
+
+.button-verDetalhes-whatsappButton:hover {
+    background-color: #279947;
+}
+
+.button-entreEmContato {
+    background-color: #6ae384;
+    display: flex;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+
+    gap: 0.5rem;
+
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-MaisDetalhes {
+    opacity: 0;
+    pointer-events: none;
+    background-color: white;
+    width: 70vw;
+    height: 60vh;
+    border-radius: 1rem;
+    padding: 1rem;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.25s;
+    z-index: 2;
+}
+
+.popup-MaisDetalhes.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.popup-MaisDetalhes-topo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.maisDetalhes-titulo {
+    font-size: 2rem;
+    line-height: 1;
+
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.popup-MaisDetalhes-conteudo {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    margin-top: 1rem;
+    height: calc(100% - 3rem);
+}
+
+.popup-MaisDetalhes-conteudoBody{
+    width: 100%; 
+    height: 100%;
+    display: flex; 
+    flex-direction: column;
+}
+
+.popup-MaisDetalhes-conteudo-direito {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+
+    flex-grow: 1;
+    gap: 0.5rem;
+}
+
+.popup-imagem {
+    max-width: 100%;
+    width: 65%;
+    height: auto;
+    border-radius: 0.5rem;
+    object-fit: cover;
+}
+
+.popup-descricao {
+    font-family: "Lexend", sans-serif;
+    font-size: 1rem;
+    color: var(--informacoesPequenas-color);
+}
+
+.popup-preco {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--yellow-accent-color);
+}
+
+.popup-ano-km {
+    font-size: 0.9rem;
+    color: var(--informacoesPequenas-color);
+}
+
+.button-whatsapp-popup {
+    background-color: #34c85f;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: center;
+    transition: 0.25s all;
+}
+
+.button-whatsapp-popup:hover {
+    background-color: #2e8b57;
+}
+
+.button-whatsapp-popup svg {
+    color: white;
+}
+
+.button-whatsapp-popup p {
+    line-height: 1px;
+}
+
+.popup-MaisDetalhes-overlay {
+    opacity: 0;
+    pointer-events: none;
+    background-color: rgba(0, 0, 0, 0.30);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    transition: all 0.25s;
+    z-index: 1;
+}
+
+.popup-MaisDetalhes-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.cores div {
+    height: 100px;
+    width: 100px;
+}
+
+.cor1 {
+    background-color: #f4cc40;
+}
+
+.cor2 {
+    background-color: #40e8f4;
+}
+
+.cor3 {
+    background-color: #f440b2;
+}
+
+@media (max-width: 768px) {
+    header {
+        height: 4rem;
+        padding: 0 1rem;
+    }
+
+    main {
+        padding: 1rem 2rem;
+    }
+
+    .grid-fotosMoto-moto {
+        margin: 0;
+    }
+
+    .button-verDetalhes {
+        padding: 1rem;
+        height: 3rem;
+    }
+
+    .button-verDetalhes-whatsappButton {
+        height: 3rem;
+        width: 3rem;
+    }
+
+    .popup-MaisDetalhes-conteudo {
+        flex-direction: column;
+    }
+
+    .popup-imagem {
+        width: 100%;
+    }
+
+    .ordenarMotos {
+        background-color: transparent;
+    }
+
+    .popup-MaisDetalhes-conteudo-direito{
+        align-items: center;
+    }
+
+}
